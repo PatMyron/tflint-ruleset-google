@@ -15,6 +15,9 @@
 package magicmodules
 
 import (
+	"fmt"
+	"regexp"
+
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
 	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
@@ -74,7 +77,7 @@ func (r *GoogleComputeSubnetworkInvalidIpv6AccessTypeRule) Check(runner tflint.R
 		var val string
 		err := runner.EvaluateExpr(attribute.Expr, &val, nil)
 
-		validateFunc := validation.StringInSlice([]string{"EXTERNAL", ""}, false)
+		validateFunc := validation.StringInSlice([]string{"EXTERNAL", "INTERNAL", ""}, false)
 
 		err = runner.EnsureNoError(err, func() error {
 			_, errors := validateFunc(val, r.attributeName)
