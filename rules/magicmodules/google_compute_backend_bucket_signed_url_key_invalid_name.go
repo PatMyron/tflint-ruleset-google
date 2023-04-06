@@ -15,6 +15,10 @@
 package magicmodules
 
 import (
+	"fmt"
+	"regexp"
+
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
 	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 )
